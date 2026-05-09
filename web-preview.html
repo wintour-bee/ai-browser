@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Browser - 智能浏览器预览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo {
+            font-size: 72px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            font-size: 20px;
+            color: #a0a0a0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(0, 217, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #00d9ff;
+        }
+
+        .feature-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .phone-mockup {
+            display: flex;
+            justify-content: center;
+            margin: 60px 0;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .phone {
+            width: 320px;
+            height: 640px;
+            background: #000;
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #1a1a2e;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 30px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .browser-header {
+            background: #16213e;
+            padding: 50px 15px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .browser-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .browser-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 217, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            color: #00d9ff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .browser-content {
+            height: calc(100% - 100px);
+            background: linear-gradient(180deg, #1a1a2e 0%, #0f3460 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .ai-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #00d9ff, #00ff88);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        .ai-message {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 20px;
+            padding: 15px 20px;
+            max-width: 90%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .vpn-status {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 255, 136, 0.2);
+            border: 1px solid #00ff88;
+            border-radius: 30px;
+            padding: 10px 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vpn-dot {
+            width: 10px;
+            height: 10px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        .screenshots {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 60px 0;
+        }
+
+        .screenshot {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .screenshot-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .screenshot h4 {
+            color: #00d9ff;
+            margin-bottom: 10px;
+        }
+
+        .tech-stack {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .tech-stack h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #00d9ff;
+        }
+
+        .tech-logos {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tech-icon {
+            font-size: 48px;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 80px 0;
+            animation: fadeIn 2s ease;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(0, 217, 255, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 20px rgba(0, 217, 255, 0);
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🤖</div>
+            <h1>AI Browser</h1>
+            <p>下一代智能浏览器，集成 AI 助手、无障碍 VPN、多引擎 AI 支持，打造前所未有的浏览体验</p>
+        </div>
+
+        <div class="phone-mockup">
+            <div class="phone">
+                <div class="phone-screen">
+                    <div class="phone-notch"></div>
+                    <div class="browser-header">
+                        <input type="text" class="browser-input" value="ai-browser.app" readonly>
+                        <button class="browser-btn">🔍</button>
+                    </div>
+                    <div class="browser-content">
+                        <div class="ai-avatar">🤖</div>
+                        <div class="ai-message">
+                            <p>您好！我是您的 AI 助手</p>
+                            <p style="margin-top: 10px; color: #00d9ff;">有什么可以帮助您的吗？</p>
+                        </div>
+                    </div>
+                    <div class="vpn-status">
+                        <div class="vpn-dot"></div>
+                        <span>VPN 已连接</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>AI 智能助手</h3>
+                <p>集成多个顶级 AI 模型（ChatGPT、Claude、Gemini、文心一言等），随时为您提供智能对话、写作、翻译服务</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>无障碍 VPN</h3>
+                <p>内置 V2Ray 代理服务，支持多种协议，自动选择最优线路，保障您的网络安全与隐私</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>极速浏览</h3>
+                <p>基于 Chrome 内核，优化的渲染引擎，支持广告拦截、脚本控制，享受流畅的上网体验</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📑</div>
+                <h3>智能标签页</h3>
+                <p>支持多标签页管理、标签页分组、标签页预览、紧急标签页恢复，数据云端同步</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>书签管理</h3>
+                <p>强大的书签系统，支持文件夹分类、标签标记、搜索功能，数据加密云同步</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3>下载管理</h3>
+                <p>强大的下载管理器，支持多线程下载、断点续传、后台下载、自定义下载路径</p>
+            </div>
+        </div>
+
+        <div class="tech-stack">
+            <h2>技术架构</h2>
+            <div class="tech-logos">
+                <div class="tech-item">
+                    <div class="tech-icon">🟢</div>
+                    <span>Kotlin</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🔷</div>
+                    <span>Jetpack Compose</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🟠</div>
+                    <span>Node.js</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🐘</div>
+                    <span>PostgreSQL</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🔴</div>
+                    <span>Redis</span>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🐳</div>
+                    <span>Docker</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="screenshots">
+            <div class="screenshot">
+                <div class="screenshot-icon">🌐</div>
+                <h4>浏览器核心</h4>
+                <p>Chrome 内核 · 广告拦截 · 隐私保护</p>
+            </div>
+            <div class="screenshot">
+                <div class="screenshot-icon">💬</div>
+                <h4>AI 对话</h4>
+                <p>多模型切换 · 上下文记忆 · 语音输入</p>
+            </div>
+            <div class="screenshot">
+                <div class="screenshot-icon">🔐</div>
+                <h4>VPN 连接</h4>
+                <p>V2Ray 集成 · 智能路由 · 一键连接</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="font-size: 36px; margin-bottom: 30px;">准备好开始了吗？</h2>
+            <a href="#" class="cta-btn">立即下载安装</a>
+        </div>
+
+        <div class="footer">
+            <p>AI Browser - 让浏览更智能 · 让连接更安全</p>
+            <p style="margin-top: 10px; color: #888;">© 2026 AI Browser. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

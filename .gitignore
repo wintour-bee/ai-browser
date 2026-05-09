@@ -1,0 +1,39 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Android
+app/build/
+app/*.apk
+app/*.aab
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Backend
+node_modules/
+.env
+*.log
+npm-debug.log*
+
+# Docker
+.docker/
+
+# Misc
+*.bak
+*.tmp
+*.temp
+*.old
