@@ -238,7 +238,7 @@ interface AIDao {
     @Delete
     suspend fun deleteSession(session: AISessionEntity)
 
-    @Query("DELETE FROM sessions WHERE id = :id")
+    @Query("DELETE FROM ai_sessions WHERE id = :id")
     suspend fun deleteSessionById(id: String)
 
     @Query("SELECT * FROM ai_messages WHERE sessionId = :sessionId ORDER BY createdAt ASC")
