@@ -195,7 +195,7 @@ data class AISummarizeRequest(
 )
 
 @Serializable
-data classAITranslateRequest(
+data class AITranslateRequest(
     val provider: AIProvider,
     val text: String,
     val sourceLanguage: String = "auto",
