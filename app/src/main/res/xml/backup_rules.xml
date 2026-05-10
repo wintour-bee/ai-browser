@@ -2,7 +2,9 @@
 <full-backup-content>
     <include domain="sharedpref" path="."/>
     <exclude domain="sharedpref" path="secure_prefs.xml"/>
+    <include domain="database" path="."/>
     <exclude domain="database" path="ai_browser_database"/>
 </full-backup-content>
+
 
 
