@@ -205,16 +205,18 @@ fun LoginScreen(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                HorizontalDivider(
-                    modifier = Modifier.weight(1f)
+                Divider(
+                    modifier = Modifier.weight(1f),
+                    color = AITheme.TextTertiary.copy(alpha = 0.5f)
                 )
                 Text(
                     text = "  or  ",
                     style = MaterialTheme.typography.bodySmall,
                     color = AITheme.TextSecondary
                 )
-                HorizontalDivider(
-                    modifier = Modifier.weight(1f)
+                Divider(
+                    modifier = Modifier.weight(1f),
+                    color = AITheme.TextTertiary.copy(alpha = 0.5f)
                 )
             }
             

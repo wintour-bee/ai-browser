@@ -253,7 +253,7 @@ fun HistoryScreen(
     onHistoryItemClick: (String) -> Unit
 ) {
     // Use a simple placeholder for history - this would typically be connected to a ViewModel
-    val history by remember { mutableStateOf<List<HistoryItem>>(emptyList()) }.collectAsState()
+    val history by remember { mutableStateOf<List<HistoryItem>>(emptyList()) }
     
     Scaffold(
         topBar = {
@@ -404,7 +404,7 @@ fun BookmarksScreen(
     onBookmarkClick: (String) -> Unit
 ) {
     // Use a simple placeholder for bookmarks - this would typically be connected to a ViewModel
-    val bookmarks by remember { mutableStateOf<List<Bookmark>>(emptyList()) }.collectAsState()
+    val bookmarks by remember { mutableStateOf<List<Bookmark>>(emptyList()) }
     
     Scaffold(
         topBar = {
