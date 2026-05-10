@@ -154,6 +154,7 @@ data class AISession(
     val title: String = "New Chat"
 )
 
+@Serializable
 data class AIMessage(
     val id: String,
     val role: AIRole,
@@ -163,6 +164,7 @@ data class AIMessage(
     val isStreaming: Boolean = false
 )
 
+@Serializable
 enum class AIRole {
     USER,
     ASSISTANT,

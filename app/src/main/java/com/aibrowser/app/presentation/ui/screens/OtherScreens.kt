@@ -10,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -249,10 +250,10 @@ fun SettingsScreen(
 @Composable
 fun HistoryScreen(
     onNavigateBack: () -> Unit,
-    onHistoryItemClick: (String) -> Unit,
-    historyUseCase: GetHistoryUseCase = hiltViewModel()
+    onHistoryItemClick: (String) -> Unit
 ) {
-    val history by historyUseCase().collectAsState(initial = emptyList())
+    // Use a simple placeholder for history - this would typically be connected to a ViewModel
+    val history by remember { mutableStateOf(emptyList<HistoryItem>()) }.collectAsState()
     
     Scaffold(
         topBar = {
@@ -400,10 +401,10 @@ fun HistoryItem(
 @Composable
 fun BookmarksScreen(
     onNavigateBack: () -> Unit,
-    onBookmarkClick: (String) -> Unit,
-    getBookmarksUseCase: GetBookmarksUseCase = hiltViewModel()
+    onBookmarkClick: (String) -> Unit
 ) {
-    val bookmarks by getBookmarksUseCase().collectAsState(initial = emptyList())
+    // Use a simple placeholder for bookmarks - this would typically be connected to a ViewModel
+    val bookmarks by remember { mutableStateOf(emptyList<Bookmark>()) }.collectAsState()
     
     Scaffold(
         topBar = {

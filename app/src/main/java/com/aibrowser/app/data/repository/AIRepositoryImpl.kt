@@ -1,9 +1,8 @@
 package com.aibrowser.app.data.repository
 
 import com.aibrowser.app.data.local.database.AIDao
-import com.aibrowser.app.data.local.database.AISessionEntity
-import com.aibrowser.app.data.local.database.AIMessageEntity
-import com.aibrowser.app.data.local.entity.AIMessageEntity as AIMessageEntityLocal
+import com.aibrowser.app.data.local.entity.AISessionEntity
+import com.aibrowser.app.data.local.entity.AIMessageEntity
 import com.aibrowser.app.data.remote.api.AIApi
 import com.aibrowser.app.data.remote.dto.AIChatRequestDto
 import com.aibrowser.app.data.remote.dto.AIMessageDto

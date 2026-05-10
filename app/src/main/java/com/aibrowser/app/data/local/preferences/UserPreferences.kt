@@ -25,9 +25,9 @@ class UserPreferences @Inject constructor(
             preferences[KEY_USER_EMAIL] = user.email
             preferences[KEY_USER_NAME] = user.username
             preferences[KEY_USER_AVATAR] = user.avatarUrl ?: ""
-            preferences[KEY_USER_IS_VIP] = user.isVip.toString()
-            preferences[KEY_USER_VIP_LEVEL] = user.vipLevel.toString()
-            preferences[KEY_USER_POINTS] = user.points.toString()
+            preferences[KEY_USER_IS_VIP] = user.isVip
+            preferences[KEY_USER_VIP_LEVEL] = user.vipLevel
+            preferences[KEY_USER_POINTS] = user.points
             preferences[KEY_USER_INVITE_CODE] = user.inviteCode
         }
     }
@@ -40,9 +40,9 @@ class UserPreferences @Inject constructor(
             email = preferences[KEY_USER_EMAIL] ?: "",
             username = preferences[KEY_USER_NAME] ?: "",
             avatarUrl = preferences[KEY_USER_AVATAR]?.takeIf { it.isNotEmpty() },
-            isVip = preferences[KEY_USER_IS_VIP]?.toBoolean() ?: false,
-            vipLevel = preferences[KEY_USER_VIP_LEVEL]?.toInt() ?: 0,
-            points = preferences[KEY_USER_POINTS]?.toLong() ?: 0,
+            isVip = preferences[KEY_USER_IS_VIP] ?: false,
+            vipLevel = preferences[KEY_USER_VIP_LEVEL] ?: 0,
+            points = preferences[KEY_USER_POINTS] ?: 0L,
             inviteCode = preferences[KEY_USER_INVITE_CODE] ?: "",
             createdAt = System.currentTimeMillis()
         )

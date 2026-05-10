@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.aibrowser.app.presentation.ui.screens
 
 import androidx.compose.animation.*

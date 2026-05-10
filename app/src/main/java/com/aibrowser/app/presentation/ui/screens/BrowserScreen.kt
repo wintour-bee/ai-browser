@@ -34,7 +34,8 @@ fun BrowserScreen(
     viewModel: BrowserViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
-    val browserViewModel = remember { BrowserViewModel(hiltViewModel().browserCore as Any, hiltViewModel()) }
+    // Use the injected viewModel directly instead of creating a new one
+    val browserViewModel = viewModel
     
     val browserState by viewModel.browserState.collectAsState()
     val currentUrl by viewModel.currentUrl.collectAsState()
@@ -110,7 +111,9 @@ fun BrowserScreen(
                 // Loading indicator
                 AnimatedVisibility(
                     visible = isLoading,
-                    modifier = Modifier.align(Alignment.TopCenter)
+                    modifier = Modifier.align(Alignment.TopCenter),
+                    enter = fadeIn(),
+                    exit = fadeOut()
                 ) {
                     LinearProgressIndicator(
                         progress = { loadingProgress / 100f },

@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.font.FontWeight
 import androidx.core.view.WindowCompat
 
 // Color palette - Arc Browser inspired with AI vibes
@@ -171,99 +172,99 @@ val Typography = Typography(
 
 private object TypographyTokens {
     val DisplayLarge = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.Normal,
+        fontWeight = FontWeight.Normal,
         fontSize = androidx.compose.ui.unit.TextUnit(57f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(64f, androidx.compose.ui.unit.TextUnitType.Sp),
         letterSpacing = androidx.compose.ui.unit.TextUnit(-0.25f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val DisplayMedium = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.Normal,
+        fontWeight = FontWeight.Normal,
         fontSize = androidx.compose.ui.unit.TextUnit(45f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(52f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val DisplaySmall = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.Normal,
+        fontWeight = FontWeight.Normal,
         fontSize = androidx.compose.ui.unit.TextUnit(36f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(44f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val HeadlineLarge = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.SemiBold,
+        fontWeight = FontWeight.SemiBold,
         fontSize = androidx.compose.ui.unit.TextUnit(32f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(40f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val HeadlineMedium = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.SemiBold,
+        fontWeight = FontWeight.SemiBold,
         fontSize = androidx.compose.ui.unit.TextUnit(28f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(36f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val HeadlineSmall = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.SemiBold,
+        fontWeight = FontWeight.SemiBold,
         fontSize = androidx.compose.ui.unit.TextUnit(24f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(32f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val TitleLarge = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.Medium,
+        fontWeight = FontWeight.Medium,
         fontSize = androidx.compose.ui.unit.TextUnit(22f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(28f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val TitleMedium = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.Medium,
+        fontWeight = FontWeight.Medium,
         fontSize = androidx.compose.ui.unit.TextUnit(16f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(24f, androidx.compose.ui.unit.TextUnitType.Sp),
         letterSpacing = androidx.compose.ui.unit.TextUnit(0.15f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val TitleSmall = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.Medium,
+        fontWeight = FontWeight.Medium,
         fontSize = androidx.compose.ui.unit.TextUnit(14f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(20f, androidx.compose.ui.unit.TextUnitType.Sp),
         letterSpacing = androidx.compose.ui.unit.TextUnit(0.1f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val BodyLarge = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.Normal,
+        fontWeight = FontWeight.Normal,
         fontSize = androidx.compose.ui.unit.TextUnit(16f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(24f, androidx.compose.ui.unit.TextUnitType.Sp),
         letterSpacing = androidx.compose.ui.unit.TextUnit(0.5f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val BodyMedium = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.Normal,
+        fontWeight = FontWeight.Normal,
         fontSize = androidx.compose.ui.unit.TextUnit(14f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(20f, androidx.compose.ui.unit.TextUnitType.Sp),
         letterSpacing = androidx.compose.ui.unit.TextUnit(0.25f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val BodySmall = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.Normal,
+        fontWeight = FontWeight.Normal,
         fontSize = androidx.compose.ui.unit.TextUnit(12f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(16f, androidx.compose.ui.unit.TextUnitType.Sp),
         letterSpacing = androidx.compose.ui.unit.TextUnit(0.4f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val LabelLarge = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.Medium,
+        fontWeight = FontWeight.Medium,
         fontSize = androidx.compose.ui.unit.TextUnit(14f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(20f, androidx.compose.ui.unit.TextUnitType.Sp),
         letterSpacing = androidx.compose.ui.unit.TextUnit(0.1f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val LabelMedium = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.Medium,
+        fontWeight = FontWeight.Medium,
         fontSize = androidx.compose.ui.unit.TextUnit(12f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(16f, androidx.compose.ui.unit.TextUnitType.Sp),
         letterSpacing = androidx.compose.ui.unit.TextUnit(0.5f, androidx.compose.ui.unit.TextUnitType.Sp)
     )
     
     val LabelSmall = androidx.compose.ui.text.TextStyle(
-        fontWeight = androidx.compose.ui.text.font.weight.Medium,
+        fontWeight = FontWeight.Medium,
         fontSize = androidx.compose.ui.unit.TextUnit(11f, androidx.compose.ui.unit.TextUnitType.Sp),
         lineHeight = androidx.compose.ui.unit.TextUnit(16f, androidx.compose.ui.unit.TextUnitType.Sp),
         letterSpacing = androidx.compose.ui.unit.TextUnit(0.5f, androidx.compose.ui.unit.TextUnitType.Sp)

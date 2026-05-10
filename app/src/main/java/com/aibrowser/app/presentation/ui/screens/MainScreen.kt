@@ -250,6 +250,7 @@ fun MainScreen(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TabCard(
     tab: Tab,

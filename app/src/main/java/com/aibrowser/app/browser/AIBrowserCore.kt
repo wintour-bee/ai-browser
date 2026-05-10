@@ -111,7 +111,7 @@ class AIBrowserCore @Inject constructor(
                     { request -> adBlockInterceptor(request) }
                 } else null
             )
-            webViewClient = client
+            webViewClient = client!!
             
             // WebChrome client for progress
             webChromeClient = object : WebChromeClient() {
@@ -199,7 +199,15 @@ class AIBrowserCore @Inject constructor(
     }
     
     fun captureSnapshot(): Bitmap? {
-        return webView?.capturePicture()?.toBitmap()
+        val picture = webView?.capturePicture() ?: return null
+        val bitmap = Bitmap.createBitmap(
+            picture.width.coerceAtLeast(1),
+            picture.height.coerceAtLeast(1),
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = android.graphics.Canvas(bitmap)
+        picture.draw(canvas)
+        return bitmap
     }
 }
 
