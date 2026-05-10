@@ -206,8 +206,7 @@ fun LoginScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 HorizontalDivider(
-                    modifier = Modifier.weight(1f),
-                    color = AITheme.BorderDark
+                    modifier = Modifier.weight(1f)
                 )
                 Text(
                     text = "  or  ",
@@ -215,8 +214,7 @@ fun LoginScreen(
                     color = AITheme.TextSecondary
                 )
                 HorizontalDivider(
-                    modifier = Modifier.weight(1f),
-                    color = AITheme.BorderDark
+                    modifier = Modifier.weight(1f)
                 )
             }
             

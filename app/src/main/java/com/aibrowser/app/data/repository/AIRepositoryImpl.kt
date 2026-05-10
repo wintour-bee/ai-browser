@@ -186,7 +186,7 @@ fun AISession.toEntity(): AISessionEntity {
     )
 }
 
-fun AIMessageEntityLocal.toDomain(): AIMessage {
+fun AIMessageEntity.toDomain(): AIMessage {
     return AIMessage(
         id = id,
         role = AIRole.valueOf(role.uppercase()),
@@ -201,8 +201,8 @@ fun AIMessageEntityLocal.toDomain(): AIMessage {
     )
 }
 
-fun AIMessage.toEntity(sessionId: String): AIMessageEntityLocal {
-    return AIMessageEntityLocal(
+fun AIMessage.toEntity(sessionId: String): AIMessageEntity {
+    return AIMessageEntity(
         id = id,
         sessionId = sessionId,
         role = role.name.lowercase(),

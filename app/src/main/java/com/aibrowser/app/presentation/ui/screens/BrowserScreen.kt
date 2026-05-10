@@ -109,14 +109,14 @@ fun BrowserScreen(
                 )
                 
                 // Loading indicator
-                AnimatedVisibility(
+                androidx.compose.animation.AnimatedVisibility(
                     visible = isLoading,
                     modifier = Modifier.align(Alignment.TopCenter),
                     enter = fadeIn(),
                     exit = fadeOut()
                 ) {
                     LinearProgressIndicator(
-                        progress = { loadingProgress / 100f },
+                        progress = loadingProgress / 100f,
                         modifier = Modifier.fillMaxWidth(),
                         color = AITheme.AccentPurple,
                         trackColor = AITheme.DarkSurfaceVariant
@@ -321,6 +321,7 @@ fun TabSwitcherOverlay(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TabPreviewCard(
     tab: com.aibrowser.app.domain.model.Tab,

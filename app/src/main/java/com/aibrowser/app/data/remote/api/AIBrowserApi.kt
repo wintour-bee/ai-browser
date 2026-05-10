@@ -1,6 +1,7 @@
 package com.aibrowser.app.data.remote.api
 
 import com.aibrowser.app.data.remote.dto.*
+import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -90,7 +91,7 @@ interface AIApi {
     suspend fun chat(@Body request: AIChatRequestDto): Response<AIChatResponseDto>
 
     @POST("ai/chat/stream")
-    suspend fun chatStream(@Body request: AIChatRequestDto): Response<retrofit2.http.ResponseBody>
+    suspend fun chatStream(@Body request: AIChatRequestDto): Response<ResponseBody>
 
     @POST("ai/summarize")
     suspend fun summarize(@Body request: AISummarizeRequestDto): Response<AISummarizeResponseDto>
